@@ -1,1 +1,0 @@
-### this is the repository for college mini project
