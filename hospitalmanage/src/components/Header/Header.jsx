@@ -1,82 +1,116 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaUser, FaSignInAlt, FaBars, FaTimes } from 'react-icons/fa';
+import Logo from '../../assets/logo.svg';
 
-export default function Header() {
-  return (
-    <header className="shadow sticky z-50 top-0">
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <Link to="/" className="flex items-center">
-            <img
-              src="https://alexharkness.com/wp-content/uploads/2020/06/logo-2.png"
-              className="mr-3 h-12"
-              alt="Logo"
-            />
-          </Link>
-          <div className="flex items-center lg:order-2">
-            <Link
-              to="#"
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-            >
-              Log in
-            </Link>
-            <Link
-              to="#"
-              className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-            >
-              Get started
-            </Link>
-          </div>
-          <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
-          >
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              <li>
-                <NavLink
-                to={"/"}
-                  className={({isActive}) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${isActive ? "text-orange-700" : "text-gray-700"} hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                to={"/about"}
-                  className={({isActive}) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${isActive ? "text-orange-700" : "text-gray-700"} hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                to={"/contact"}
-                  className={({isActive}) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${isActive ? "text-orange-700" : "text-gray-700"} hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                  }
-                >
-                  Contact-Us
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                to={"/github"}
-                  className={({isActive}) =>
-                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 ${isActive ? "text-orange-700" : "text-gray-700"} hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                  }
-                >
-                  Github
-                </NavLink>
-              </li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-  );
-}
+const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeItem, setActiveItem] = useState('/');
+    const location = useLocation();
+
+    useEffect(() => {
+        setActiveItem(location.pathname);
+    }, [location]);
+
+    const navItems = [
+        { title: 'Home', path: '/' },
+        { title: 'Appointments', path: '/appointments' },
+        { title: 'Patients', path: '/patients' },
+        { title: 'Doctors', path: '/doctors' },
+        { title: 'About', path: '/about' },
+        { title: 'Contact', path: '/contact' },
+    ];
+
+    return (
+        <header className="bg-gradient-to-r from-primary to-secondary py-3 px-4">
+            <div className="container mx-auto">
+                <div className="flex justify-between items-center">
+                    <Link to="/" className="flex items-center space-x-2">
+                        <img src={Logo} alt="Next Healtth Logo" className="h-10 w-auto" />
+                        <span className="text-2xl font-bold text-accent">Next Health</span>
+                    </Link>
+
+                    <nav className="hidden md:flex space-x-1">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                className={`relative px-3 py-2 text-base font-medium text-light hover:text-accent transition-colors duration-300 ${
+                                    activeItem === item.path ? 'text-accent' : ''
+                                }`}
+                            >
+                                {item.title}
+                                {activeItem === item.path && (
+                                    <motion.div
+                                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
+                                        layoutId="underline"
+                                        initial={false}
+                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                    />
+                                )}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    <div className="hidden md:flex items-center space-x-3">
+                        <Link to="/signup" className="bg-accent text-primary px-4 py-1.5 rounded-full hover:bg-light transition duration-300 text-sm font-medium">
+                            <FaUser className="inline-block mr-1" />Sign Up
+                        </Link>
+                        <Link to="/login" className="bg-light text-primary px-4 py-1.5 rounded-full hover:bg-accent transition duration-300 text-sm font-medium">
+                            <FaSignInAlt className="inline-block mr-1" />Log In
+                        </Link>
+                    </div>
+
+                    <button 
+                        className="md:hidden text-light focus:outline-none"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                    </button>
+                </div>
+
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="md:hidden mt-3"
+                        >
+                            {navItems.map((item) => (
+                                <Link
+                                    key={item.path}
+                                    to={item.path}
+                                    className={`block py-2 px-3 text-base font-medium text-light hover:text-accent transition duration-300 ${
+                                        activeItem === item.path ? 'text-accent' : ''
+                                    }`}
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    {item.title}
+                                </Link>
+                            ))}
+                            <Link
+                                to="/signup"
+                                className="block py-2 px-3 text-base font-medium text-light hover:text-accent transition duration-300"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <FaUser className="inline-block mr-1" />Sign Up
+                            </Link>
+                            <Link
+                                to="/login"
+                                className="block py-2 px-3 text-base font-medium text-light hover:text-accent transition duration-300"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <FaSignInAlt className="inline-block mr-1" />Log In
+                            </Link>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </header>
+    );
+};
+
+export default Header;
