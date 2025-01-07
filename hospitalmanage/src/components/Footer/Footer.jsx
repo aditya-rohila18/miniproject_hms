@@ -14,11 +14,11 @@ const Footer = () => {
   ];
 
   const footerLinks = [
-    { title: 'About Us', to: '/about-us' },
-    { title: 'Services', to: '/services' },
-    { title: 'Privacy Policy', to: '/privacy-policy' },
-    { title: 'Terms of Service', to: '/terms-of-service' },
-    { title: 'Contact Us', to: '/contact-us' },
+    { title: 'About Us', to: '/about' },
+    { title: 'Services', to: '/' },
+    { title: 'Privacy Policy', to: '/' },
+    { title: 'Terms of Service', to: '/' },
+    { title: 'Contact Us', to: '/contact' },
   ];
 
   return (
