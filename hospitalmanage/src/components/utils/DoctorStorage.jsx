@@ -1,4 +1,12 @@
 // Initialize local storage with some sample data if it's empty
+
+import brwn from "../../assets/brwn.png"
+import jd from "../../assets/jd.png"
+import js from "../../assets/js.png"
+import ld from "../../assets/lisadavis.png"
+import wlms from "../../assets/williams.png"
+import bj from "../../assets/bj.png"
+
 const initializeDoctors = () => {
     const sampleDoctors = [
       {
@@ -7,7 +15,7 @@ const initializeDoctors = () => {
         specialty: "Cardiologist",
         patients: 1000,
         experience: 15,
-        image: "https://example.com/doctor1.jpg",
+        image: jd,
         bio: "Dr. John Doe is a renowned cardiologist with 15 years of experience."
       },
       {
@@ -16,7 +24,7 @@ const initializeDoctors = () => {
         specialty: "Pediatrician",
         patients: 800,
         experience: 10,
-        image: "https://example.com/doctor2.jpg",
+        image: js,
         bio: "Dr. Jane Smith is a caring pediatrician dedicated to children's health."
       },
       {
@@ -25,7 +33,7 @@ const initializeDoctors = () => {
         specialty: "Orthopedic Surgeon",
         patients: 1200,
         experience: 20,
-        image: "https://example.com/doctor3.jpg",
+        image: bj,
         bio: "Dr. Bob Johnson is an expert orthopedic surgeon specializing in joint replacements."
 
       },
@@ -35,7 +43,7 @@ const initializeDoctors = () => {
         specialty: "Dermatologist",
         patients: 1500,
         experience: 25,
-        image: "https://example.com/doctor4.jpg",
+        image: wlms,
         bio: "Dr. Sarah Williams is a skilled dermatologist with 25 years of experience."
       },
       {
@@ -44,7 +52,7 @@ const initializeDoctors = () => {
         specialty: "Neurologist",
         patients: 900,
         experience: 12,
-        image: "https://example.com/doctor5.jpg",
+        image: brwn,
         bio: "Dr. Michael Brown is a compassionate neurologist specializing in brain disorders."
       },
       {
@@ -53,11 +61,9 @@ const initializeDoctors = () => {
         specialty: "Psychiatrist",
         patients: 1100,
         experience: 18,
-        image: "https://example.com/doctor6.jpg",
+        image: ld,
         bio: "Dr. Lisa Davis is a caring psychiatrist dedicated to mental health."
       },
-
-
     ];
   
    
