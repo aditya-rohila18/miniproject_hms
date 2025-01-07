@@ -185,14 +185,14 @@ const images = [
       </h2>
       <div className="flex-grow"> {}
         <p className="text-gray-600 mb-4 text-[1.1rem] font-montserrat">
-          Health Next is a cutting-edge healthcare management system
+           Next  Health is a cutting-edge healthcare management system
           designed to streamline medical processes and enhance patient
           care. Our platform integrates advanced technology with medical
           expertise to provide a seamless experience for both healthcare
           providers and patients.
         </p>
         <p className="text-gray-600 mb-4 text-[1.1rem] font-montserrat">
-          With Health Next, you can easily manage appointments, access
+          With  Next Health, you can easily manage appointments, access
           medical records, and communicate with your healthcare team.
           We're committed to improving healthcare accessibility and
           efficiency, ensuring that you receive the best possible care.
