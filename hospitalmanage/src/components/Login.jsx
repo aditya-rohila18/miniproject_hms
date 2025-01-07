@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { FaEnvelope, FaLock, FaSignInAlt } from "react-icons/fa";
-import LoginContext from "./Context/LoginContext";
 
 const Login = () => {
-  const { setIsLoggedIn } = useContext(LoginContext);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -19,15 +17,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend for authentication
     console.log("Login attempt:", formData);
-    // Reset form after submission
+   
     setFormData({
       email: "",
       password: "",
     });
     setIsLoggedIn(true);
-    // You might want to redirect the user or show a success message here
   };
 
   return (
