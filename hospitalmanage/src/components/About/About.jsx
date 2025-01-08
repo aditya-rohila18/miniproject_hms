@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../../assets/logo.svg'
 
 export default function About() {
     return (
@@ -7,22 +8,19 @@ export default function About() {
                 <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
                     <div className="md:5/12 lg:w-5/12">
                         <img
-                            src="https://tailus.io/sources/blocks/left-image/preview/images/startup.png"
-                            alt="image"
+                            src={logo}
+                            alt="Hospital Management System"
                         />
                     </div>
                     <div className="md:7/12 lg:w-6/12">
                         <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
-                            React development is carried out by passionate developers
+                            A Comprehensive Solution for Efficient Hospital Management
                         </h2>
                         <p className="mt-6 text-gray-600">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis voluptatem
-                            accusantium nemo perspiciatis delectus atque autem! Voluptatum tenetur beatae unde
-                            aperiam, repellat expedita consequatur! Officiis id consequatur atque doloremque!
+                            Our Hospital Management System aims to streamline hospital operations by simplifying administrative tasks, improving patient care, and optimizing the management of resources. The system is designed to ensure smooth coordination between departments and improve communication within the hospital.
                         </p>
                         <p className="mt-4 text-gray-600">
-                            Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at?
-                            Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia.
+                            Built with React and modern web technologies, our system features an intuitive user interface that allows healthcare professionals to access patient records, schedule appointments, and manage medical histories with ease. The goal is to create a secure, efficient, and user-friendly platform that enhances both the patient and staff experience.
                         </p>
                     </div>
                 </div>
