@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
         <div className="mt-8 pt-6 border-t border-gray-700 text-center text-sm">
           <p>
-            © {currentYear}  Next Health. All rights reserved.
+            © {currentYear}   Next Health. All rights reserved.
           </p>
           <p className="mt-2 flex items-center justify-center">
             Made with <FaHeart className="text-accent mx-1" /> by Next Health Team
